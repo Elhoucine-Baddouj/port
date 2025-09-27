@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaShieldAlt, FaBars, FaTimes } from 'react-icons/fa';
+import { FaShieldAlt, FaBars, FaTimes, FaFileAlt } from 'react-icons/fa';
 
 interface HeaderProps {
   currentSection: string;
@@ -18,16 +18,19 @@ const HeaderContainer = styled(motion.header)`
   border-bottom: 2px solid rgba(0, 255, 65, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  overflow: visible;
 `;
 
 const HeaderContent = styled.div`
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 var(--spacing-xl);
+  padding: 0 var(--spacing-lg);
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  gap: var(--spacing-lg);
 `;
 
 const Logo = styled(motion.div)`
@@ -57,11 +60,13 @@ const LogoIcon = styled(FaShieldAlt)`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   height: 100%;
+  flex: 1;
+  justify-content: center;
 
-  @media (max-width: 1024px) {
-    gap: var(--spacing-sm);
+  @media (max-width: 1200px) {
+    gap: 0.5rem;
   }
 
   @media (max-width: 768px) {
@@ -69,64 +74,92 @@ const Nav = styled.nav`
   }
 `;
 
-const NavLink = styled(motion.a)<{ active: boolean }>`
+const NavLink = styled(motion.a)<{ active: boolean; isSpecial?: boolean }>`
   color: ${props => props.active ? 'var(--primary-color)' : 'var(--text-secondary)'};
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  padding: var(--spacing-md) var(--spacing-lg);
+  letter-spacing: 0.8px;
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--radius-md);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   cursor: pointer;
   white-space: nowrap;
-  height: 40px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.3rem;
+  min-width: fit-content;
 
-  &:hover {
-    color: var(--primary-color);
-    background: rgba(0, 255, 65, 0.08);
-    transform: translateY(-2px);
-  }
+  /* Style spécial pour Resume */
+  ${props => props.isSpecial && `
+    background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+    color: #000000;
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    box-shadow: 0 3px 12px rgba(0, 255, 65, 0.3);
+    border: 2px solid transparent;
+    min-width: 80px;
+    
+    &:hover {
+      background: linear-gradient(135deg, #00cc33 0%, #00ff41 100%);
+      color: #000000;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px rgba(0, 255, 65, 0.4);
+    }
+    
+    &::after {
+      display: none;
+    }
+  `}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, transparent 100%);
-    border-radius: var(--radius-md);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  /* Style normal pour les autres liens */
+  ${props => !props.isSpecial && `
+    &:hover {
+      color: var(--primary-color);
+      background: rgba(0, 255, 65, 0.08);
+      transform: translateY(-2px);
+    }
 
-  &:hover::before {
-    opacity: 1;
-  }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, transparent 100%);
+      border-radius: var(--radius-md);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: ${props => props.active ? '80%' : '0'};
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color) 0%, #00cc33 100%);
-    border-radius: 2px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-  }
+    &:hover::before {
+      opacity: 1;
+    }
 
-  &:hover::after {
-    width: 80%;
-  }
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: ${props.active ? '80%' : '0'};
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color) 0%, #00cc33 100%);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    }
+
+    &:hover::after {
+      width: 80%;
+    }
+  `}
 `;
 
 const MobileMenuButton = styled(motion.button)`
@@ -173,7 +206,7 @@ const MobileNav = styled.nav`
   gap: var(--spacing-md);
 `;
 
-const MobileNavLink = styled.a<{ active: boolean }>`
+const MobileNavLink = styled.a<{ active: boolean; isSpecial?: boolean }>`
   color: ${props => props.active ? 'var(--primary-color)' : 'var(--text-secondary)'};
   text-decoration: none;
   font-weight: 600;
@@ -185,12 +218,35 @@ const MobileNavLink = styled.a<{ active: boolean }>`
   transition: all 0.3s ease;
   border-left: 4px solid ${props => props.active ? 'var(--primary-color)' : 'transparent'};
   background: ${props => props.active ? 'rgba(0, 255, 65, 0.05)' : 'transparent'};
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
 
-  &:hover {
-    color: var(--primary-color);
-    background: rgba(0, 255, 65, 0.08);
-    transform: translateX(5px);
-  }
+  /* Style spécial pour Resume */
+  ${props => props.isSpecial && `
+    background: linear-gradient(135deg, #00ff41 0%, #00cc33 100%);
+    color: #000000;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 255, 65, 0.3);
+    border-left: 4px solid transparent;
+    margin-top: var(--spacing-md);
+    
+    &:hover {
+      background: linear-gradient(135deg, #00cc33 0%, #00ff41 100%);
+      color: #000000;
+      transform: translateX(5px);
+      box-shadow: 0 6px 20px rgba(0, 255, 65, 0.4);
+    }
+  `}
+
+  /* Style normal pour les autres liens */
+  ${props => !props.isSpecial && `
+    &:hover {
+      color: var(--primary-color);
+      background: rgba(0, 255, 65, 0.08);
+      transform: translateX(5px);
+    }
+  `}
 `;
 
 const Header: React.FC<HeaderProps> = ({ currentSection }) => {
@@ -213,15 +269,40 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
     { id: 'experience', label: 'Expérience' },
     { id: 'projects', label: 'Projets' },
     { id: 'achievements', label: 'Compétences en action' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'contact', label: 'Contact', isPage: true },
+    { id: 'resume', label: 'Resume', isSpecial: true }
   ];
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (sectionId === 'resume') {
+      openResume();
+    } else if (sectionId === 'contact') {
+      openContact();
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const openResume = () => {
+    // Utiliser la navigation SPA
+    if ((window as any).openResume) {
+      (window as any).openResume();
+    } else {
+      window.location.href = '/resume';
+    }
+  };
+
+  const openContact = () => {
+    // Utiliser la navigation SPA
+    if ((window as any).navigateToPage) {
+      (window as any).navigateToPage('contact');
+    } else {
+      window.location.href = '/contact';
+    }
   };
 
   return (
@@ -250,10 +331,12 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
             <NavLink
               key={item.id}
               active={currentSection === item.id}
+              isSpecial={item.isSpecial}
               onClick={() => scrollToSection(item.id)}
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}
             >
+              {item.isSpecial && <FaFileAlt />}
               {item.label}
             </NavLink>
           ))}
@@ -281,8 +364,10 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                 <MobileNavLink
                   key={item.id}
                   active={currentSection === item.id}
+                  isSpecial={item.isSpecial}
                   onClick={() => scrollToSection(item.id)}
                 >
+                  {item.isSpecial && <FaFileAlt />}
                   {item.label}
                 </MobileNavLink>
               ))}

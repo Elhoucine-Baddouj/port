@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaShieldAlt, FaTerminal, FaLock, FaEye } from 'react-icons/fa';
-import { getOptimizedConfig } from '../config/performance';
 
 const HeroSection = styled.section`
   min-height: 100vh;
@@ -102,81 +101,6 @@ const HeroDescription = styled(motion.p)`
   }
 `;
 
-const CTAButton = styled(motion.button)`
-  background: linear-gradient(135deg, var(--primary-color) 0%, #00cc33 100%);
-  color: var(--background-dark);
-  border: none;
-  padding: var(--spacing-lg) var(--spacing-2xl);
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: var(--shadow-glow);
-  transition: all 0.3s ease;
-  margin: 0 var(--spacing-md);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-  }
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 255, 65, 0.4);
-    
-    &::before {
-      left: 100%;
-    }
-  }
-
-  @media (max-width: 768px) {
-    margin: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
-`;
-
-const SecondaryButton = styled(motion.button)`
-  background: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  padding: var(--spacing-lg) var(--spacing-2xl);
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  margin: 0 var(--spacing-md);
-
-  &:hover {
-    background: var(--primary-color);
-    color: var(--background-dark);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 768px) {
-    margin: var(--spacing-sm);
-    padding: var(--spacing-md) var(--spacing-lg);
-  }
-`;
-
-const ButtonContainer = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-md);
-`;
 
 const FloatingIcons = styled.div`
   position: absolute;
@@ -195,7 +119,7 @@ const FloatingIcon = styled(motion.div)`
   font-size: 2rem;
 `;
 
-const MatrixBackground = styled.div`
+const BackgroundEffects = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -203,45 +127,6 @@ const MatrixBackground = styled.div`
   height: 100%;
   z-index: 0;
   overflow: hidden;
-`;
-
-const MatrixRain = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  line-height: 14px;
-  color: var(--primary-color);
-  text-shadow: 0 0 5px var(--primary-color);
-  z-index: 1;
-`;
-
-const MatrixColumn = styled.div<{ delay: number; speed: number }>`
-  position: absolute;
-  top: -100%;
-  left: ${props => props.delay * 20}px;
-  animation: matrixFall ${props => props.speed}s linear infinite;
-  animation-delay: ${props => props.delay * 0.1}s;
-  
-  @keyframes matrixFall {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100vh); }
-  }
-`;
-
-const MatrixCharacter = styled.span<{ opacity: number }>`
-  display: block;
-  opacity: ${props => props.opacity};
-  animation: matrixGlow 3s ease-in-out infinite;
-  will-change: text-shadow;
-  
-  @keyframes matrixGlow {
-    0%, 100% { text-shadow: 0 0 5px var(--primary-color); }
-    50% { text-shadow: 0 0 15px var(--primary-color); }
-  }
 `;
 
 const Scanlines = styled.div`
@@ -304,24 +189,6 @@ const SecurityGrid = styled.div`
   }
 `;
 
-const FloatingParticles = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-`;
-
-const Particle = styled(motion.div)<{ size: number }>`
-  position: absolute;
-  width: ${props => props.size}px;
-  height: ${props => props.size}px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  box-shadow: 0 0 ${props => props.size * 2}px var(--primary-color);
-`;
 
 const HackingEffects = styled(motion.div)`
   display: flex;
@@ -430,9 +297,6 @@ const StatLabel = styled.div`
 
 const Hero: React.FC = () => {
   const [currentText, setCurrentText] = useState(0);
-  const [matrixColumns, setMatrixColumns] = useState<Array<{id: number, characters: string[], delay: number, speed: number}>>([]);
-  const [particles, setParticles] = useState<Array<{id: number, x: number, y: number, size: number}>>([]);
-  const config = getOptimizedConfig();
   
   const texts = [
     "Pentesting & Audit de Sécurité",
@@ -440,9 +304,6 @@ const Hero: React.FC = () => {
     "Sécurité des Réseaux",
     "Cryptographie Appliquée"
   ];
-
-  // Caractères pour la Matrix Rain
-  const matrixChars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -452,91 +313,13 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, [texts.length]);
 
-  // Génération des colonnes Matrix
-  useEffect(() => {
-    const columns = [];
-    const numColumns = Math.min(Math.floor(window.innerWidth / 30), config.MATRIX.MAX_COLUMNS);
-    
-    for (let i = 0; i < numColumns; i++) {
-      const characters = [];
-      const length = Math.floor(Math.random() * (config.MATRIX.MAX_COLUMN_LENGTH - config.MATRIX.MIN_COLUMN_LENGTH)) + config.MATRIX.MIN_COLUMN_LENGTH;
-      
-      for (let j = 0; j < length; j++) {
-        characters.push(matrixChars[Math.floor(Math.random() * matrixChars.length)]);
-      }
-      
-      columns.push({
-        id: i,
-        characters,
-        delay: i,
-        speed: Math.random() * (config.MATRIX.MAX_SPEED - config.MATRIX.MIN_SPEED) + config.MATRIX.MIN_SPEED
-      });
-    }
-    
-    setMatrixColumns(columns);
-  }, [config.MATRIX]);
-
-  // Génération des particules flottantes - Optimisé
-  useEffect(() => {
-    const newParticles = [];
-    for (let i = 0; i < config.PARTICLES.COUNT; i++) {
-      newParticles.push({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * (config.PARTICLES.MAX_SIZE - config.PARTICLES.MIN_SIZE) + config.PARTICLES.MIN_SIZE
-      });
-    }
-    setParticles(newParticles);
-  }, [config.PARTICLES]);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <HeroSection id="home">
-      <MatrixBackground>
+      <BackgroundEffects>
         <SecurityGrid />
-        <MatrixRain>
-          {matrixColumns.map((column) => (
-            <MatrixColumn key={column.id} delay={column.delay} speed={column.speed}>
-              {column.characters.map((char, index) => (
-                <MatrixCharacter 
-                  key={index} 
-                  opacity={1 - (index / column.characters.length)}
-                >
-                  {char}
-                </MatrixCharacter>
-              ))}
-            </MatrixColumn>
-          ))}
-        </MatrixRain>
-        <FloatingParticles>
-          {particles.map((particle) => (
-            <Particle
-              key={particle.id}
-              size={particle.size}
-              style={{ left: `${particle.x}%`, top: `${particle.y}%` }}
-              animate={{
-                y: [0, -20, 0], // Réduit l'amplitude
-                opacity: [0.3, 0.8, 0.3], // Réduit l'opacité max
-                scale: [1, 1.1, 1] // Réduit le scale
-              }}
-              transition={{
-                duration: 4 + (particle.id * 0.5), // Durée fixe basée sur l'ID
-                repeat: Infinity,
-                delay: particle.id * 0.3 // Délai basé sur l'ID
-              }}
-            />
-          ))}
-        </FloatingParticles>
         <Scanlines />
         <GlitchOverlay />
-      </MatrixBackground>
+      </BackgroundEffects>
       
              <FloatingIcons>
          <FloatingIcon
@@ -616,13 +399,13 @@ const Hero: React.FC = () => {
                 <span style={{ color: '#00ff88' }}>$</span> whoami
               </TerminalLine>
               <TerminalLine>
-                <span style={{ color: '#00ccff' }}>elhoucine_baddouj</span>
+                <span style={{ color: '#00ccff' }}>Elhoucine_Baddouj</span>
               </TerminalLine>
               <TerminalLine>
                 <span style={{ color: '#00ff88' }}>$</span> cat skills.txt
               </TerminalLine>
               <TerminalLine>
-                <span style={{ color: '#ff6b6b' }}>Pentesting</span> | <span style={{ color: '#4ecdc4' }}>Malware Analysis</span> | <span style={{ color: '#45b7d1' }}>SOC</span>
+                <span style={{ color: '#ff6b6b' }}>Pentesting</span> | <span style={{ color: '#4ecdc4' }}>SOC Analyst</span> | <span style={{ color: '#45b7d1' }}>Network Security</span>
               </TerminalLine>
               <TerminalLine>
                 <span style={{ color: '#00ff88' }}>$</span> <TerminalCursor>_</TerminalCursor>
@@ -632,8 +415,8 @@ const Hero: React.FC = () => {
           
           <HackingStats>
             <StatItem>
-              <StatNumber>150+</StatNumber>
-              <StatLabel>Rooms Hackées</StatLabel>
+              <StatNumber>10+</StatNumber>
+              <StatLabel>Projects</StatLabel>
             </StatItem>
             <StatItem>
               <StatNumber>Top 1%</StatNumber>

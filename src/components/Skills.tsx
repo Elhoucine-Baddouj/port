@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -153,6 +153,7 @@ const ToolCard = styled(motion.div)`
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     border-color: var(--primary-color);
@@ -173,11 +174,55 @@ const ToolName = styled.div`
   font-size: 0.9rem;
 `;
 
+const Tooltip = styled(motion.div)`
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 10px);
+  transform: translateX(-50%);
+  width: 280px;
+  max-width: 80vw;
+  background: rgba(10, 14, 14, 0.98);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  z-index: 10;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: rgba(10, 14, 14, 0.98);
+    border-left: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    transform: translateX(-50%) rotate(45deg);
+  }
+`;
+
 const Skills: React.FC = () => {
   const [ref, inView] = useInView({
     threshold: 0.3,
     triggerOnce: true
   });
+
+  const [hoveredTool, setHoveredTool] = useState<number | null>(null);
+  const [activeTool, setActiveTool] = useState<number | null>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveTool(null);
+    };
+    window.addEventListener('keydown', onKey, { passive: true } as any);
+    return () => window.removeEventListener('keydown', onKey as any);
+  }, []);
 
   const skillCategories = [
     {
@@ -210,7 +255,7 @@ const Skills: React.FC = () => {
         { name: "Analyse Dynamique", level: 5, icon: <FaTerminal /> },
         { name: "Reverse Engineering", level: 4, icon: <FaBug /> },
         { name: "Analyse de Packets", level: 4, icon: <FaNetworkWired /> },
-        { name: "Forensics Numérique", level: 4, icon: <FaServer /> }
+        { name: "Forensics Numérique", level: 3, icon: <FaServer /> }
       ]
     },
     {
@@ -260,12 +305,31 @@ const Skills: React.FC = () => {
     { name: "ELK Stack", icon: <SiElastic /> },
     { name: "SQLMap", icon: <FaDatabaseIcon /> },
     { name: "WhatWeb", icon: <FaSpider /> },
+    { name: "pfSense", icon: <FaShieldAlt /> },
     { name: "Docker", icon: <FaDocker /> },
     { name: "Git", icon: <FaGithub /> },
     { name: "Linux", icon: <FaLinux /> },
-    { name: "Windows", icon: <FaWindows /> },
-    { name: "PostgreSQL", icon: <FaDatabase /> }
+    { name: "Windows", icon: <FaWindows /> }
   ];
+
+  const toolDescriptions: Record<string, string> = {
+    'Kali Linux': "Distribution Linux orientée cybersécurité, utilisée pour le pentesting, l’audit et le forensic, avec de nombreux outils intégrés (Nmap, Metasploit, Wireshark, etc.).",
+    'Wireshark': "Analyseur de paquets réseau pour capturer et inspecter le trafic afin de détecter des anomalies, attaques ou fuites de données.",
+    'Metasploit': "Framework d’exploitation permettant de développer, tester et exécuter des exploits contre des systèmes vulnérables.",
+    'Nmap': "Scanner réseau pour découvrir hôtes, services et versions, et réaliser des audits de sécurité.",
+    'Burp Suite': "Outil d’interception/analyse HTTP(S) pour identifier et exploiter des vulnérabilités web.",
+    'Splunk': "Plateforme de collecte, indexation et visualisation de logs en temps réel pour le monitoring et la détection d’incidents.",
+    'Wazuh': "SIEM open-source offrant détection d’intrusions, gestion des logs, surveillance d’intégrité et réponse aux menaces.",
+    'OWASP ZAP': "Scanner open-source de sécurité web pour détecter automatiquement des failles (XSS, SQLi, etc.).",
+    'ELK Stack': "Elasticsearch, Logstash, Kibana : centraliser, traiter et visualiser de grands volumes de logs.",
+    'SQLMap': "Outil automatisé de test/exploitation d’injections SQL pour démontrer les risques d’accès non autorisé.",
+    'WhatWeb': "Scanner identifiant technologies et frameworks d'un site (CMS, serveurs, langages, plugins).",
+    'pfSense': "Firewall et routeur open-source basé sur FreeBSD, offrant des fonctionnalités avancées de sécurité réseau, VPN, et monitoring du trafic.",
+    'Docker': "Plateforme de conteneurs pour déployer des applications de façon portable et isolée.",
+    'Git': "Système de contrôle de version pour gérer et suivre les modifications du code en équipe.",
+    'Linux': "Système d’exploitation open-source, stable et flexible, largement utilisé en cybersécurité.",
+    'Windows': "Système d’exploitation Microsoft, très présent en entreprise et souvent ciblé par des attaques."
+  };
 
   const renderSkillLevel = (level: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -335,9 +399,23 @@ const Skills: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={inView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
+                onHoverStart={() => setHoveredTool(index)}
+                onHoverEnd={() => setHoveredTool((h) => (h === index ? null : h))}
+                onFocus={() => setHoveredTool(index)}
+                onBlur={() => setHoveredTool((h) => (h === index ? null : h))}
+                onClick={() => setActiveTool((a) => (a === index ? null : index))}
+                role="button"
+                tabIndex={0}
               >
                 <ToolIcon>{tool.icon}</ToolIcon>
                 <ToolName>{tool.name}</ToolName>
+                <Tooltip
+                  initial={{ opacity: 0, scale: 0.95, y: -4 }}
+                  animate={hoveredTool === index || activeTool === index ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.95, y: -4 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  {toolDescriptions[tool.name]}
+                </Tooltip>
               </ToolCard>
             ))}
           </ToolsGrid>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
   FaTrophy, FaStar, FaExternalLinkAlt, FaCode, FaShieldAlt,
-  FaUserTie, FaGlobe, FaCalendarAlt, FaMapMarkerAlt, FaBriefcase
+  FaUserTie, FaGlobe, FaCalendarAlt, FaMapMarkerAlt
 } from 'react-icons/fa';
 import { SiTryhackme } from 'react-icons/si';
 
@@ -73,142 +73,6 @@ const ContentGrid = styled.div`
   flex-direction: column;
   gap: var(--spacing-3xl);
   margin-bottom: var(--spacing-3xl);
-`;
-
-// Freelancer Section Styled Components
-const FreelancerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: var(--spacing-2xl);
-`;
-
-const FreelancerCard = styled(motion.div)`
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 2px solid var(--primary-color);
-  border-radius: var(--radius-xl);
-  padding: var(--spacing-2xl);
-  position: relative;
-  overflow: hidden;
-  max-width: 900px;
-  width: 100%;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, rgba(0, 255, 136, 0.05) 50%, transparent 70%);
-    transform: translateX(-100%);
-    transition: transform 0.8s ease;
-  }
-
-  &:hover::before {
-    transform: translateX(100%);
-  }
-`;
-
-const FreelancerHeader = styled.div`
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
-  padding-bottom: var(--spacing-md);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-`;
-
-const FreelancerIcon = styled.div`
-  color: var(--primary-color);
-  font-size: 3rem;
-  filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.3));
-`;
-
-const FreelancerInfo = styled.div`
-  flex: 1;
-`;
-
-const FreelancerTitle = styled.h3`
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-sm);
-  background: linear-gradient(135deg, var(--primary-color) 0%, #00ccff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-`;
-
-const FreelancerSubtitle = styled.p`
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--spacing-xs);
-  font-weight: 500;
-`;
-
-const FreelancerStats = styled.div`
-  display: flex;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-lg);
-  
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: var(--spacing-md);
-  }
-`;
-
-const FreelancerStat = styled.div`
-  text-align: center;
-  padding: var(--spacing-md);
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  border-radius: var(--radius-md);
-  flex: 1;
-`;
-
-const FreelancerStatNumber = styled.div`
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-xs);
-`;
-
-const FreelancerStatLabel = styled.div`
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-`;
-
-const FreelancerDescription = styled.p`
-  color: var(--text-secondary);
-  line-height: 1.7;
-  margin-bottom: var(--spacing-lg);
-  font-size: 1rem;
-  text-align: justify;
-`;
-
-const FreelancerProfileLink = styled(motion.a)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  background: linear-gradient(135deg, var(--primary-color) 0%, #00cc33 100%);
-  color: var(--background-dark);
-  text-decoration: none;
-  padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: var(--radius-lg);
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  width: 100%;
-
-  &:hover {
-    background: linear-gradient(135deg, #00cc33 0%, var(--primary-color) 100%);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-glow);
-  }
 `;
 
 const TryHackMeContainer = styled.div`
@@ -575,10 +439,16 @@ const CertificationIntroText = styled.p`
 `;
 
 const CertificationContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+  gap: var(--spacing-xl);
   width: 100%;
   margin-top: var(--spacing-xl);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
 `;
 
 const CertificationCard = styled(motion.div)`
@@ -729,7 +599,6 @@ const Achievements: React.FC = () => {
     triggerOnce: true
   });
 
-  console.log('Achievements component rendering, inView:', inView);
 
   const reviews = [
     {
@@ -773,152 +642,97 @@ const Achievements: React.FC = () => {
   return (
     <AchievementsSection id="achievements" ref={ref}>
       <Container>
-        <SectionHeader
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <SectionTitle>Compétences en Action</SectionTitle>
-          <SectionDivider />
-          <SectionSubtitle>
-            Parcours TryHackMe et retours d'expérience de mes clients Freelancer
-          </SectionSubtitle>
-        </SectionHeader>
+                 <SectionHeader
+           initial={{ opacity: 0, y: 50 }}
+           animate={inView ? { opacity: 1, y: 0 } : {}}
+           transition={{ duration: 0.8 }}
+         >
+                       <SectionTitle>Compétences en Action</SectionTitle>
+           <SectionDivider />
+           <SectionSubtitle>
+             Parcours TryHackMe et retours d'expérience de mes clients Freelancer
+           </SectionSubtitle>
+         </SectionHeader>
 
-          <ContentGrid>
-            {/* Freelancer Section */}
-            <FreelancerContainer>
-              <FreelancerCard
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <FreelancerHeader>
-                  <FreelancerIcon>
-                    <FaBriefcase />
-                  </FreelancerIcon>
-                  <FreelancerInfo>
-                    <FreelancerTitle>Freelancer.com</FreelancerTitle>
-                    <FreelancerSubtitle>Plateforme de services professionnels en cybersécurité</FreelancerSubtitle>
-                  </FreelancerInfo>
-                </FreelancerHeader>
+                 <ContentGrid>
+           {/* TryHackMe Section */}
+           <TryHackMeContainer>
+             <TryHackMeCard
+               initial={{ opacity: 0, y: 50 }}
+               animate={inView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.8, delay: 0.2 }}
+             >
+               <TryHackMeSectionTitle>TryHackMe</TryHackMeSectionTitle>
+               
+               <TryHackMeHeader>
+                 <TryHackMeIcon>
+                   <SiTryhackme />
+                 </TryHackMeIcon>
+                 <TryHackMeInfo>
+                   <TryHackMeTitle>Plateforme de formation cybersécurité</TryHackMeTitle>
+                   <TryHackMeSubtitle>Apprentissage pratique et immersif</TryHackMeSubtitle>
+                 </TryHackMeInfo>
+               </TryHackMeHeader>
 
-                <FreelancerStats>
-                  <FreelancerStat>
-                    <FreelancerStatNumber>5.0★</FreelancerStatNumber>
-                    <FreelancerStatLabel>Note Globale</FreelancerStatLabel>
-                  </FreelancerStat>
-                  <FreelancerStat>
-                    <FreelancerStatNumber>7</FreelancerStatNumber>
-                    <FreelancerStatLabel>Avis Clients</FreelancerStatLabel>
-                  </FreelancerStat>
-                  <FreelancerStat>
-                    <FreelancerStatNumber>100%</FreelancerStatNumber>
-                    <FreelancerStatLabel>Livraison à Temps</FreelancerStatLabel>
-                  </FreelancerStat>
-                  <FreelancerStat>
-                    <FreelancerStatNumber>86%</FreelancerStatNumber>
-                    <FreelancerStatLabel>Taux d'Acceptation</FreelancerStatLabel>
-                  </FreelancerStat>
-                </FreelancerStats>
+               <TryHackMeDescription>
+                 TryHackMe est une plateforme leader dans l'apprentissage de la cybersécurité, 
+                 offrant des environnements virtuels sécurisés pour pratiquer le hacking éthique, 
+                 la forensique numérique et la défense informatique. Chaque "room" représente 
+                 un défi unique permettant d'acquérir des compétences pratiques essentielles.
+               </TryHackMeDescription>
 
-                <FreelancerDescription>
-                  En tant que freelancer spécialisé en cybersécurité, j'ai développé une expertise solide 
-                  dans la livraison de solutions de haute qualité dans des délais serrés. Mes compétences 
-                  en communication me permettent de collaborer efficacement avec des clients internationaux, 
-                  en assurant une compréhension claire des besoins et une transparence totale tout au long 
-                  du projet. J'excelle dans l'analyse technique, le développement sécurisé, et la résolution 
-                  de problèmes complexes, garantissant des résultats qui dépassent les attentes.
-                </FreelancerDescription>
+                               <RankingSection>
+                  <RankingTitle>Classements & Performances</RankingTitle>
+                  <RankingGrid>
+                    <RankingCard>
+                      <RankingNumber>Top 1%</RankingNumber>
+                      <RankingLabel>Mondial</RankingLabel>
+                    </RankingCard>
+                    <RankingCard>
+                      <RankingNumber>#195</RankingNumber>
+                      <RankingLabel>Maroc</RankingLabel>
+                    </RankingCard>
+                    <StatCard>
+                      <StatNumber>150+</StatNumber>
+                      <StatLabel>Rooms Complétées</StatLabel>
+                    </StatCard>
+                    <StatCard>
+                      <StatNumber>5★</StatNumber>
+                      <StatLabel>Évaluation</StatLabel>
+                    </StatCard>
+                  </RankingGrid>
+                </RankingSection>
 
-                <FreelancerProfileLink 
-                  href="https://www.fr.freelancer.com/u/houssinb9" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <FaExternalLinkAlt />
-                  Voir mon profil Freelancer
-                </FreelancerProfileLink>
-              </FreelancerCard>
-            </FreelancerContainer>
+               <TryHackMeLink 
+                 href="https://tryhackme.com/p/Ace12" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+               >
+                 <FaExternalLinkAlt />
+                 Voir mon profil
+               </TryHackMeLink>
+                        </TryHackMeCard>
+         </TryHackMeContainer>
 
-            {/* TryHackMe Section */}
-            <TryHackMeContainer>
-              <TryHackMeCard
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                <TryHackMeSectionTitle>TryHackMe</TryHackMeSectionTitle>
-                
-                <TryHackMeHeader>
-                  <TryHackMeIcon>
-                    <SiTryhackme />
-                  </TryHackMeIcon>
-                  <TryHackMeInfo>
-                    <TryHackMeTitle>Plateforme de formation cybersécurité</TryHackMeTitle>
-                    <TryHackMeSubtitle>Apprentissage pratique et immersif</TryHackMeSubtitle>
-                  </TryHackMeInfo>
-                </TryHackMeHeader>
-
-                <TryHackMeDescription>
-                  TryHackMe est une plateforme leader dans l'apprentissage de la cybersécurité, 
-                  offrant des environnements virtuels sécurisés pour pratiquer le hacking éthique, 
-                  la forensique numérique et la défense informatique. Chaque "room" représente 
-                  un défi unique permettant d'acquérir des compétences pratiques essentielles.
-                </TryHackMeDescription>
-
-                                <RankingSection>
-                   <RankingTitle>Classements & Performances</RankingTitle>
-                   <RankingGrid>
-                     <RankingCard>
-                       <RankingNumber>Top 1%</RankingNumber>
-                       <RankingLabel>Mondial</RankingLabel>
-                     </RankingCard>
-                     <RankingCard>
-                       <RankingNumber>#195</RankingNumber>
-                       <RankingLabel>Maroc</RankingLabel>
-                     </RankingCard>
-                     <StatCard>
-                       <StatNumber>150+</StatNumber>
-                       <StatLabel>Rooms Complétées</StatLabel>
-                     </StatCard>
-                     <StatCard>
-                       <StatNumber>5★</StatNumber>
-                       <StatLabel>Évaluation</StatLabel>
-                     </StatCard>
-                   </RankingGrid>
-                 </RankingSection>
-
-                <TryHackMeLink 
-                  href="https://tryhackme.com/p/Ace12" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <FaExternalLinkAlt />
-                  Voir mon profil
-                </TryHackMeLink>
-                         </TryHackMeCard>
-          </TryHackMeContainer>
-
-          {/* Certification Section */}
-          <CertificationIntro
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <CertificationIntroText>
-              En plus de mon parcours pratique, j'ai également obtenu des certifications reconnues 
-              qui valident mes compétences théoriques en cybersécurité.
-            </CertificationIntroText>
-          </CertificationIntro>
-          
-          <CertificationContainer>
-            <CertificationCard
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
+         {/* Certification Section */}
+         <CertificationIntro
+           initial={{ opacity: 0, y: 30 }}
+           animate={inView ? { opacity: 1, y: 0 } : {}}
+           transition={{ duration: 0.8, delay: 0.25 }}
+         >
+           <CertificationIntroText>
+             En plus de mon parcours pratique, j'ai également obtenu des certifications reconnues 
+             qui valident mes compétences théoriques en cybersécurité.
+           </CertificationIntroText>
+         </CertificationIntro>
+         
+         <CertificationContainer>
+           {/* Certification Cisco */}
+           <CertificationCard
+             initial={{ opacity: 0, y: 50 }}
+             animate={inView ? { opacity: 1, y: 0 } : {}}
+             transition={{ duration: 0.8, delay: 0.3 }}
+           >
              <CertificationHeader>
                <CertificationIcon>
                  <FaTrophy />
@@ -972,20 +786,71 @@ const Achievements: React.FC = () => {
                </CertificationDetails>
              </CertificationContent>
            </CertificationCard>
+
+           {/* Certification OffSec */}
+           <CertificationCard
+             initial={{ opacity: 0, y: 50 }}
+             animate={inView ? { opacity: 1, y: 0 } : {}}
+             transition={{ duration: 0.8, delay: 0.5 }}
+           >
+             <CertificationHeader>
+               <CertificationIcon>
+                 <FaShieldAlt />
+               </CertificationIcon>
+               <CertificationInfo>
+                 <CertificationTitle>Certified Cloud Security Professional (CCSP)</CertificationTitle>
+                 <CertificationSubtitle>Certification OffSec</CertificationSubtitle>
+                 <CertificationIssuer>Délivrée par OffSec</CertificationIssuer>
+               </CertificationInfo>
+             </CertificationHeader>
+
+             <CertificationContent>
+               <CertificationImage>
+                 <img 
+                   src="/0334458ee7c3.png" 
+                   alt="Certification CCSP OffSec"
+                   loading="eager"
+                   decoding="sync"
+                   fetchPriority="high"
+                   style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                 />
+               </CertificationImage>
+               
+               <CertificationDetails>
+                 <CertificationDescription>
+                   Cette certification valide mes compétences avancées en sécurité cloud, 
+                   couvrant l'architecture, la conception et la sécurisation des environnements cloud, 
+                   ainsi que la gestion des risques et la conformité dans le cloud.
+                 </CertificationDescription>
+                 
+                 <CertificationActions>
+                   <CertificationLink 
+                     href="https://www.coursera.org/learn/ccsp1" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     primary
+                   >
+                     <FaExternalLinkAlt />
+                     Voir le cours sur Coursera
+                   </CertificationLink>
+                 </CertificationActions>
+               </CertificationDetails>
+             </CertificationContent>
+           </CertificationCard>
          </CertificationContainer>
 
-          {/* Reviews Section */}
-            <ReviewsSection>
-              <ReviewsHeader
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <ReviewsTitle>💼 Avis Clients Freelancer</ReviewsTitle>
-                <ReviewsSubtitle>
-                  Retours d'expérience de mes clients sur la plateforme Freelancer.com
-                </ReviewsSubtitle>
-              </ReviewsHeader>
+         {/* Reviews Section */}
+           <ReviewsSection>
+             <ReviewsHeader
+               initial={{ opacity: 0, y: 30 }}
+               animate={inView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.8, delay: 0.4 }}
+             >
+               <ReviewsTitle>💼 Avis Clients Freelancer</ReviewsTitle>
+               <ReviewsSubtitle>
+                 Retours d'expérience de mes clients sur la plateforme Freelancer.com
+               </ReviewsSubtitle>
+             </ReviewsHeader>
 
              <ReviewsGrid>
                {reviews.map((review, index) => (
@@ -994,9 +859,9 @@ const Achievements: React.FC = () => {
                    href={review.freelancerLink}
                    target="_blank"
                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, delay: 0.8 + index * 0.1 }}
+                   initial={{ opacity: 0, y: 50 }}
+                   animate={inView ? { opacity: 1, y: 0 } : {}}
+                   transition={{ duration: 0.8, delay: 0.6 + index * 0.1 }}
                    whileHover={{ scale: 1.02 }}
                  >
                   <ReviewHeader>
