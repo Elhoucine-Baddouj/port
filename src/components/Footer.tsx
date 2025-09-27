@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaShieldAlt, FaGithub, FaLinkedin, FaHeart } from 'react-icons/fa';
+import { SiTryhackme } from 'react-icons/si';
 
 const FooterContainer = styled.footer`
   background: var(--background-dark);
@@ -48,46 +49,56 @@ const BrandText = styled.div`
   color: var(--text-primary);
 `;
 
-const BrandName = styled.div`
+const BrandName = styled.h3`
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: var(--spacing-xs);
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #00cc33 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 `;
 
-const BrandTagline = styled.div`
+const BrandTagline = styled.p`
   color: var(--text-secondary);
   font-size: 0.9rem;
+  margin: 0;
 `;
 
 const SocialLinks = styled.div`
   display: flex;
   gap: var(--spacing-md);
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const SocialLink = styled(motion.a)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
-  background: var(--background-light);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 50%;
   color: var(--primary-color);
   text-decoration: none;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 
   &:hover {
     background: var(--primary-color);
     color: var(--background-dark);
     transform: translateY(-3px);
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
   }
 `;
 
 const FooterDivider = styled.div`
   height: 1px;
-  background: var(--border-color);
+  background: linear-gradient(90deg, transparent 0%, var(--border-color) 50%, transparent 100%);
   margin: var(--spacing-xl) 0;
 `;
 
@@ -95,49 +106,43 @@ const FooterBottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: var(--spacing-md);
     text-align: center;
   }
 `;
 
-const Copyright = styled.div`
+const Copyright = styled.p`
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
 `;
 
 const HeartIcon = styled(FaHeart)`
-  color: var(--accent-color);
-  animation: pulse 2s infinite;
-
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-  }
+  color: #ff6b6b;
+  font-size: 0.8rem;
 `;
 
 const FooterLinks = styled.div`
   display: flex;
   gap: var(--spacing-lg);
+  flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: var(--spacing-sm);
+    justify-content: center;
   }
 `;
 
 const FooterLink = styled.a`
   color: var(--text-secondary);
   text-decoration: none;
+  font-size: 0.9rem;
   transition: color 0.3s ease;
 
   &:hover {
@@ -156,7 +161,7 @@ const Footer: React.FC = () => {
             <BrandIcon />
             <BrandText>
               <BrandName>CyberSec Expert</BrandName>
-              <BrandTagline>Protection & Sécurité Numérique</BrandTagline>
+              <BrandTagline>Cybersecurity & Information Security Specialist</BrandTagline>
             </BrandText>
           </FooterBrand>
 
@@ -186,7 +191,7 @@ const Footer: React.FC = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <FaShieldAlt />
+              <SiTryhackme />
             </SocialLink>
           </SocialLinks>
         </FooterContent>
@@ -195,13 +200,15 @@ const Footer: React.FC = () => {
 
         <FooterBottom>
           <Copyright>
-            © {currentYear} CyberSec Expert. Fait avec <HeartIcon /> par Elhoucine Baddouj.
+            © {currentYear} CyberSec Expert. Made with <HeartIcon /> by Elhoucine Baddouj.
           </Copyright>
 
           <FooterLinks>
-            <FooterLink href="#home">Accueil</FooterLink>
-            <FooterLink href="#about">À propos</FooterLink>
-            <FooterLink href="#projects">Projets</FooterLink>
+            <FooterLink href="#home">Home</FooterLink>
+            <FooterLink href="#about">About</FooterLink>
+            <FooterLink href="#skills">Skills</FooterLink>
+            <FooterLink href="#experience">Experience</FooterLink>
+            <FooterLink href="#projects">Projects</FooterLink>
             <FooterLink href="#contact">Contact</FooterLink>
           </FooterLinks>
         </FooterBottom>

@@ -190,83 +190,83 @@ const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all');
 
   const projects = [
-    {
-      id: 1,
-      title: "Détection d'Anomalies en Temps Réel dans le Trafic Réseau",
-      description: "Système de détection d'intrusions (IDS) basé sur l'IA pour identifier les menaces réseau en temps réel. Entraîné sur le jeu de données CIC-IDS2017 avec mécanisme d'alertes instantanées pour les anomalies détectées.",
-      category: "network-ai",
-      technologies: ["Python", "Machine Learning", "Analyse de trafic réseau", "CICflowMeter"],
-      icon: <FaNetworkWired />,
-      bgColor: "linear-gradient(135deg, #00ff41 0%, #008020 100%)",
-      github: "https://github.com/Elhoucine-Baddouj/IDS",
-      demo: null
-    },
-    {
-      id: 2,
-      title: "SecuHarden – Framework d'Automatisation du Durcissement Système",
-      description: "Outil pour auditer et durcir automatiquement les systèmes Linux/Windows selon les standards de sécurité (CIS/NIST). Automatisation des vérifications de conformité et application de politiques de durcissement pour réduire la surface d'attaque de 40%.",
-      category: "system-security",
-      technologies: ["Python", "Durcissement système", "Conformité sécurité", "Scripting Bash"],
-      icon: <FaShieldAlt />,
-      bgColor: "linear-gradient(135deg, #ffaa00 0%, #804000 100%)",
-      github: null,
-      demo: null
-    },
-    {
-      id: 3,
-      title: "Area117 - Plateforme de Communication Pair-à-Pair Sécurisée",
-      description: "Application de messagerie instantanée pair-à-pair avec WebRTC, permettant une communication sécurisée sans serveur central. Chiffrement de bout en bout via RSA pour protéger les messages et transferts de fichiers.",
-      category: "web-security",
-      technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL", "Cryptographie RSA"],
-      icon: <FaLock />,
-      bgColor: "linear-gradient(135deg, #0066ff 0%, #003380 100%)",
-      github: "https://github.com/Elhoucine-Baddouj/P2PChatApp",
-      demo: null
-    },
-    {
-      id: 4,
-      title: "Pipeline d'Ingestion de Logs et Dashboard de Management",
-      description: "Pipeline scalable d'ingestion de logs traitant 500+ événements/seconde, incluant collecte, normalisation et stockage des données de sécurité. Dashboard interactif avec visualisation des tendances, alertes personnalisées et analyse temps réel via ELK Stack.",
-      category: "soc-analysis",
-      technologies: ["Vector", "Nxlog", "ClickHouse", "React", "Node.js"],
-      icon: <FaServer />,
-      bgColor: "linear-gradient(135deg, #ff00ff 0%, #800080 100%)",
-      github: "https://github.com/Elhoucine-Baddouj/logs_pepline",
-      demo: null
-    },
-    {
-      id: 5,
-      title: "Keylogger Python - Outil de Pentesting",
-      description: "Keylogger développé dans un cadre académique, capturant avec précision les frappes clavier et envoyant les données vers une adresse email spécifique via un protocole sécurisé. Mécanismes de furtivité et d'exfiltration discrète pour étudier les techniques d'accès.",
-      category: "pentesting",
-      technologies: ["Python", "SMTP"],
-      icon: <FaBug />,
-      bgColor: "linear-gradient(135deg, #ff0040 0%, #800020 100%)",
-      github: "https://github.com/Elhoucine-Baddouj/Keylogger-pyhton",
-      demo: null
-    },
-    {
-      id: 6,
-      title: "GAN Simulateur d'Attaques XSS - Projet de Recherche",
-      description: "Simulateur d'attaques XSS basé sur une architecture GAN (Generative Adversarial Network) pour générer automatiquement des payloads XSS évolués capables de contourner les systèmes de détection traditionnels.",
-      category: "pentesting-ai",
-      technologies: ["Python", "Deep Learning", "GAN", "Cybersécurité offensive", "Web Security", "OWASP Top 10"],
-      icon: <FaEye />,
-      bgColor: "linear-gradient(135deg, #00ffff 0%, #008080 100%)",
-      github: null,
-      demo: null
-    }
+     {
+       id: 1,
+       title: "Real-Time Network Traffic Anomaly Detection",
+       description: "AI-based Intrusion Detection System (IDS) to identify network threats in real-time. Trained on the CIC-IDS2017 dataset with instant alert mechanisms for detected anomalies.",
+       category: "network-ai",
+       technologies: ["Python", "Machine Learning", "Network Traffic Analysis", "CICflowMeter"],
+       icon: <FaNetworkWired />,
+       bgColor: "linear-gradient(135deg, #00ff41 0%, #008020 100%)",
+       github: "https://github.com/Elhoucine-Baddouj/IDS",
+       demo: null
+     },
+     {
+       id: 2,
+       title: "SecuHarden – System Hardening Automation Framework",
+       description: "Tool to automatically audit and harden Linux/Windows systems according to security standards (CIS/NIST). Automation of compliance checks and hardening policy application to reduce attack surface by 40%.",
+       category: "system-security",
+       technologies: ["Python", "System Hardening", "Security Compliance", "Bash Scripting"],
+       icon: <FaShieldAlt />,
+       bgColor: "linear-gradient(135deg, #ffaa00 0%, #804000 100%)",
+       github: null,
+       demo: null
+     },
+     {
+       id: 3,
+       title: "Area117 - Secure Peer-to-Peer Communication Platform",
+       description: "Peer-to-peer instant messaging application with WebRTC, enabling secure communication without a central server. End-to-end encryption via RSA to protect messages and file transfers.",
+       category: "web-security",
+       technologies: ["HTML", "CSS", "JavaScript", "Node.js", "MySQL", "RSA Cryptography"],
+       icon: <FaLock />,
+       bgColor: "linear-gradient(135deg, #0066ff 0%, #003380 100%)",
+       github: "https://github.com/Elhoucine-Baddouj/P2PChatApp",
+       demo: null
+     },
+     {
+       id: 4,
+       title: "Log Ingestion Pipeline and Management Dashboard",
+       description: "Scalable log ingestion pipeline processing 500+ events/second, including collection, normalization, and storage of security data. Interactive dashboard with trend visualization, custom alerts, and real-time analysis via ELK Stack.",
+       category: "soc-analysis",
+       technologies: ["Vector", "Nxlog", "ClickHouse", "React", "Node.js"],
+       icon: <FaServer />,
+       bgColor: "linear-gradient(135deg, #ff00ff 0%, #800080 100%)",
+       github: "https://github.com/Elhoucine-Baddouj/logs_pepline",
+       demo: null
+     },
+     {
+       id: 5,
+       title: "Python Keylogger - Pentesting Tool",
+       description: "Keylogger developed in an academic context, accurately capturing keystrokes and sending data to a specific email address via a secure protocol. Stealth and discrete exfiltration mechanisms to study access techniques.",
+       category: "pentesting",
+       technologies: ["Python", "SMTP"],
+       icon: <FaBug />,
+       bgColor: "linear-gradient(135deg, #ff0040 0%, #800020 100%)",
+       github: "https://github.com/Elhoucine-Baddouj/Keylogger-pyhton",
+       demo: null
+     },
+     {
+       id: 6,
+       title: "GAN XSS Attack Simulator - Research Project",
+       description: "XSS attack simulator based on a GAN (Generative Adversarial Network) architecture to automatically generate advanced XSS payloads capable of bypassing traditional detection systems.",
+       category: "pentesting-ai",
+       technologies: ["Python", "Deep Learning", "GAN", "Offensive Cybersecurity", "Web Security", "OWASP Top 10"],
+       icon: <FaEye />,
+       bgColor: "linear-gradient(135deg, #00ffff 0%, #008080 100%)",
+       github: null,
+       demo: null
+     }
   ];
 
-  const filters = [
-    { id: 'all', label: 'Tous' },
-    { id: 'network-ai', label: 'Réseau + IA' },
-    { id: 'system-security', label: 'Sécurité Système' },
-    { id: 'web-security', label: 'Sécurité Web' },
-    { id: 'soc-analysis', label: 'Analyse SOC' },
-    { id: 'pentesting', label: 'Pentesting' },
-    { id: 'pentesting-ai', label: 'Pentesting + IA' }
-  ];
+   const filters = [
+     { id: 'all', label: 'All' },
+     { id: 'network-ai', label: 'Network + AI' },
+     { id: 'system-security', label: 'System Security' },
+     { id: 'web-security', label: 'Web Security' },
+     { id: 'soc-analysis', label: 'SOC Analysis' },
+     { id: 'pentesting', label: 'Pentesting' },
+     { id: 'pentesting-ai', label: 'Pentesting + AI' }
+   ];
 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
@@ -280,10 +280,10 @@ const Projects: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>Projets de Cybersécurité</SectionTitle>
-          <SectionSubtitle>
-            Projets académiques et professionnels en sécurité informatique, pentesting et intelligence artificielle
-          </SectionSubtitle>
+           <SectionTitle>Cybersecurity Projects</SectionTitle>
+           <SectionSubtitle>
+             Academic and professional projects in information security, penetration testing, and artificial intelligence
+           </SectionSubtitle>
         </SectionHeader>
 
         <FilterContainer>
@@ -324,23 +324,23 @@ const Projects: React.FC = () => {
                   </ProjectTechnologies>
                   
                   <ProjectLinks>
-                    {project.github && (
-                      <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
-                        <FaGithub />
-                        Code Source
-                      </ProjectLink>
-                    )}
-                    {project.demo && (
-                      <ProjectLink href={project.demo} target="_blank" rel="noopener noreferrer">
-                        <FaExternalLinkAlt />
-                        Démo
-                      </ProjectLink>
-                    )}
-                    {!project.github && !project.demo && (
-                      <span style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>
-                        Projet privé ou en cours de développement
-                      </span>
-                    )}
+                     {project.github && (
+                       <ProjectLink href={project.github} target="_blank" rel="noopener noreferrer">
+                         <FaGithub />
+                         Source Code
+                       </ProjectLink>
+                     )}
+                     {project.demo && (
+                       <ProjectLink href={project.demo} target="_blank" rel="noopener noreferrer">
+                         <FaExternalLinkAlt />
+                         Demo
+                       </ProjectLink>
+                     )}
+                     {!project.github && !project.demo && (
+                       <span style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>
+                         Private project or under development
+                       </span>
+                     )}
                   </ProjectLinks>
                 </ProjectContent>
               </ProjectCard>

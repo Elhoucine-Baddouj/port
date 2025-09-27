@@ -170,10 +170,10 @@ const About: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>À Propos de Moi</SectionTitle>
-          <SectionSubtitle>
-            Passionné par la cybersécurité et la protection des systèmes informatiques
-          </SectionSubtitle>
+           <SectionTitle>About Me</SectionTitle>
+           <SectionSubtitle>
+             Passionate about cybersecurity and protecting information systems
+           </SectionSubtitle>
         </SectionHeader>
 
         <AboutContent>
@@ -182,46 +182,46 @@ const About: React.FC = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <AboutParagraph>
-            Je suis un <HighlightText>étudiant-ingénieur en cybersécurité</HighlightText> à l'<HighlightText>INPT</HighlightText>, passionné par la protection des systèmes et 
-            la réponse aux menaces. Mon expérience inclut la gestion de projets SOC, la réalisation de
-             tests d'intrusion et le développement d'outils de sécurisation automatisés.
-            </AboutParagraph>
+             <AboutParagraph>
+             I am a <HighlightText>cybersecurity engineering student</HighlightText> at <HighlightText>INPT</HighlightText>, passionate about system protection and 
+             threat response. My experience includes SOC project management, conducting
+              penetration tests, and developing automated security tools.
+             </AboutParagraph>
 
-            <AboutParagraph>
-            Spécialisé en <HighlightText>analyse SOC</HighlightText>, je maîtrise la <HighlightText>surveillance proactive des menaces</HighlightText>, 
-            l’<HighlightText>investigation d’incidents</HighlightText> et l’<HighlightText>analyse approfondie de logs</HighlightText>. Mon expertise inclut
-             également le <HighlightText>reverse engineering</HighlightText> pour l’étude de malware et la correlation d’événements 
-             de sécurité via des outils <HighlightText>SIEM (Wazuh, Splunk, Elastic)</HighlightText>.
-            </AboutParagraph>
+             <AboutParagraph>
+             Specialized in <HighlightText>SOC analysis</HighlightText>, I master <HighlightText>proactive threat monitoring</HighlightText>, 
+             <HighlightText>incident investigation</HighlightText>, and <HighlightText>in-depth log analysis</HighlightText>. My expertise also includes
+              <HighlightText>reverse engineering</HighlightText> for malware study and security event 
+              correlation through <HighlightText>SIEM tools (Wazuh, Splunk, Elastic)</HighlightText>.
+             </AboutParagraph>
 
-            <AboutParagraph>
-              Mon approche combine une solide formation technique avec une compréhension 
-              approfondie des enjeux de sécurité actuels, permettant de développer des 
-              solutions robustes et innovantes.
-            </AboutParagraph>
+             <AboutParagraph>
+               My approach combines solid technical training with a deep understanding 
+               of current security challenges, enabling me to develop robust and innovative 
+               solutions.
+             </AboutParagraph>
 
             <StatsGrid
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <StatCard>
-                <StatNumber>10+</StatNumber>
-                <StatLabel>Projets Sécurisés</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>Top 1%</StatNumber>
-                <StatLabel>TryHackMe Mondial</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>5★</StatNumber>
-                <StatLabel>Évaluation Freelancer</StatLabel>
-              </StatCard>
-              <StatCard>
-                <StatNumber>150+</StatNumber>
-                <StatLabel>Rooms Complétées</StatLabel>
-              </StatCard>
+               <StatCard>
+                 <StatNumber>10+</StatNumber>
+                 <StatLabel>Secured Projects</StatLabel>
+               </StatCard>
+               <StatCard>
+                 <StatNumber>Top 1%</StatNumber>
+                 <StatLabel>Global TryHackMe</StatLabel>
+               </StatCard>
+               <StatCard>
+                 <StatNumber>5★</StatNumber>
+                 <StatLabel>Freelancer Rating</StatLabel>
+               </StatCard>
+               <StatCard>
+                 <StatNumber>150+</StatNumber>
+                 <StatLabel>Rooms Completed</StatLabel>
+               </StatCard>
             </StatsGrid>
           </AboutText>
 

@@ -299,10 +299,10 @@ const Hero: React.FC = () => {
   const [currentText, setCurrentText] = useState(0);
   
   const texts = [
-    "Pentesting & Audit de Sécurité",
-    "Analyse de Malware",
-    "Sécurité des Réseaux",
-    "Cryptographie Appliquée"
+    "Penetration Testing & Security Audit",
+    "Malware Analysis",
+    "Network Security",
+    "Applied Cryptography"
   ];
 
   useEffect(() => {
@@ -357,9 +357,9 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          data-text="Ingénieur en Cybersécurité"
+          data-text="Cybersecurity Engineer"
         >
-          Ingénieur en Cybersécurité
+          Cybersecurity Engineer
         </HeroTitle>
 
         <HeroSubtitle
@@ -367,7 +367,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Expert en sécurité informatique & protection des systèmes
+          Expert in information security & system protection
         </HeroSubtitle>
 
         <motion.div
@@ -376,7 +376,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <HeroDescription>
-            Spécialisé en {texts[currentText]}
+            Specialized in {texts[currentText]}
           </HeroDescription>
         </motion.div>
 

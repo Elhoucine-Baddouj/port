@@ -343,7 +343,7 @@ const CallToAction: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Prêt à <span className="highlight">Sécuriser</span> Votre Projet ?
+          Ready to <span className="highlight">Secure</span> Your Project?
         </MainTitle>
 
         <Description
@@ -369,7 +369,7 @@ const CallToAction: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <FaEnvelope />
-            Me Contacter
+            Contact Me
           </PrimaryButton>
 
           <SecondaryButton
@@ -378,7 +378,7 @@ const CallToAction: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <FaComments />
-            Voir Mes Projets
+            View My Projects
           </SecondaryButton>
         </ButtonContainer>
 

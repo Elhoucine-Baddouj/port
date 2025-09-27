@@ -214,33 +214,33 @@ const Experience: React.FC = () => {
     triggerOnce: true
   });
 
-  const experiences = [
-    {
-      title: "Cybersecurity Intern",
-      company: "SEKERA",
-      location: "Casablanca, Maroc",
-      period: "07/2025 - Présent",
-      description: "J’ai travaillé sur un projet SOC en tant que service, en participant à la conception et à la mise en place de pipelines de logs, de solutions SOAR, de systèmes SIEM, de gestion centralisée des logs et de règles de détection des menaces.",
-      technologies: ["Vecor", "NXlog", "Clickhouse", "Threat Hunting", "Incident Response","SIEM","SOAR"]
-    },
-    {
-      title: "Penetration Tester intern",
-      company: "OGSBC",
-      location: "Tanger, Maroc",
-      period: "06/2025 - 07/2025",
-      description: "J’ai effectué des tests d’intrusion sur des applications web afin d’identifier et d’exploiter les vulnérabilités, et j’ai rédigé des rapports détaillant ces failles tout en proposant des recommandations pour renforcer la sécurité des systèmes.",
-      technologies: ["OWASP", "Burp Suite", "Metasploit", "Nmap", "SQLmap", "Nikto", "Acunetix"]
-    },
-    {
-      title: "Cybersecurity Freelancer",
-      company: "freelancer.com",
-      location: "",
-      period: "",
-      description: "J’ai travaillé sur plusieurs projets en cybersécurité, allant de la détection de vulnérabilités à la sécurisation d’applications et de systèmes, et j’ai obtenu un rank de 5 étoiles pour la qualité et l’efficacité de mes livrables.",
-      technologies: ["Automatisation & scripting", "Analyse et résolution de problèmes", "Network&Web security", "Cryptographie"]
-    },
-   
-  ];
+   const experiences = [
+     {
+       title: "Cybersecurity Intern",
+       company: "SEKERA",
+       location: "Casablanca, Morocco",
+       period: "07/2025 - Present",
+       description: "I worked on a SOC-as-a-Service project, participating in the design and implementation of log pipelines, SOAR solutions, SIEM systems, centralized log management, and threat detection rules.",
+       technologies: ["Vector", "NXlog", "Clickhouse", "Threat Hunting", "Incident Response","SIEM","SOAR"]
+     },
+     {
+       title: "Penetration Tester Intern",
+       company: "OGSBC",
+       location: "Tangier, Morocco",
+       period: "06/2025 - 07/2025",
+       description: "I performed penetration tests on web applications to identify and exploit vulnerabilities, and wrote detailed reports documenting these flaws while proposing recommendations to strengthen system security.",
+       technologies: ["OWASP", "Burp Suite", "Metasploit", "Nmap", "SQLmap", "Nikto", "Acunetix"]
+     },
+     {
+       title: "Cybersecurity Freelancer",
+       company: "freelancer.com",
+       location: "Remote",
+       period: "2024 - Present",
+       description: "I worked on several cybersecurity projects, ranging from vulnerability detection to application and system security, and achieved a 5-star rating for the quality and efficiency of my deliverables.",
+       technologies: ["Automation & Scripting", "Problem Analysis & Resolution", "Network & Web Security", "Cryptography"]
+     },
+    
+   ];
 
   return (
     <ExperienceSection id="experience" ref={ref}>
@@ -250,10 +250,10 @@ const Experience: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>Expérience Professionnelle</SectionTitle>
-          <SectionSubtitle>
-            Parcours professionnel dans le domaine de la cybersécurité
-          </SectionSubtitle>
+           <SectionTitle>Professional Experience</SectionTitle>
+           <SectionSubtitle>
+             Professional journey in the cybersecurity field
+           </SectionSubtitle>
         </SectionHeader>
 
         <Timeline>

@@ -469,9 +469,9 @@ const Achievements: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>Compétences en Action</SectionTitle>
+          <SectionTitle>Skills in Action</SectionTitle>
           <SectionSubtitle>
-
+            Discover my achievements and certifications in the cybersecurity field
           </SectionSubtitle>
         </motion.div>
 
@@ -498,29 +498,29 @@ const Achievements: React.FC = () => {
             <FreelancerStats>
               <FreelancerStat>
                 <FreelancerStatNumber>5.0★</FreelancerStatNumber>
-                <FreelancerStatLabel>Note Globale</FreelancerStatLabel>
+                <FreelancerStatLabel>Overall Rating</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
                 <FreelancerStatNumber>7</FreelancerStatNumber>
-                <FreelancerStatLabel>Avis Clients</FreelancerStatLabel>
+                <FreelancerStatLabel>Client Reviews</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
                 <FreelancerStatNumber>100%</FreelancerStatNumber>
-                <FreelancerStatLabel>Livraison à Temps</FreelancerStatLabel>
+                <FreelancerStatLabel>On-Time Delivery</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
                 <FreelancerStatNumber>86%</FreelancerStatNumber>
-                <FreelancerStatLabel>Taux d'Acceptation</FreelancerStatLabel>
+                <FreelancerStatLabel>Acceptance Rate</FreelancerStatLabel>
               </FreelancerStat>
             </FreelancerStats>
 
             <FreelancerDescription>
-              En tant que freelancer spécialisé en cybersécurité, j'ai développé une expertise solide 
-              dans la livraison de solutions de haute qualité dans des délais serrés. Mes compétences 
-              en communication me permettent de collaborer efficacement avec des clients internationaux, 
-              en assurant une compréhension claire des besoins et une transparence totale tout au long 
-              du projet. J'excelle dans l'analyse technique, le développement sécurisé, et la résolution 
-              de problèmes complexes, garantissant des résultats qui dépassent les attentes.
+              As a cybersecurity freelancer, I have developed solid expertise 
+              in delivering high-quality solutions within tight deadlines. My 
+              communication skills allow me to collaborate effectively with international clients, 
+              ensuring clear understanding of needs and total transparency throughout 
+              the project. I excel in technical analysis, secure development, and complex problem 
+              solving, guaranteeing results that exceed expectations.
             </FreelancerDescription>
 
             <FreelancerProfileSection>
@@ -536,7 +536,7 @@ const Achievements: React.FC = () => {
                 rel="noopener noreferrer"
               >
                 <FaExternalLinkAlt />
-                Voir mon profil Freelancer
+                View my Freelancer Profile
               </FreelancerProfileLink>
             </FreelancerProfileSection>
           </FreelancerContent>
@@ -613,14 +613,14 @@ const Achievements: React.FC = () => {
               <SiTryhackme style={{ fontSize: '24px', color: '#000' }} />
             </div>
             <SectionTitle style={{ marginBottom: '0' }}>
-              Parcours TryHackMe
+              TryHackMe Journey
             </SectionTitle>
           </div>
           <SectionSubtitle style={{ maxWidth: '100%', margin: '0 auto', width: '100%' }}>
-            Plateforme leader dans l'apprentissage de la cybersécurité, offrant des environnements 
-            virtuels sécurisés pour pratiquer le hacking éthique, la forensique numérique et la 
-            défense informatique. Chaque "room" représente un défi unique permettant d'acquérir 
-            des compétences pratiques essentielles.
+            Leading platform in cybersecurity learning, offering secure virtual 
+            environments to practice ethical hacking, digital forensics and 
+            information defense. Each "room" represents a unique challenge allowing to acquire 
+            essential practical skills.
           </SectionSubtitle>
         </motion.div>
 
@@ -637,22 +637,22 @@ const Achievements: React.FC = () => {
               </FreelancerIcon>
               <FreelancerInfo>
                 <FreelancerTitle>TryHackMe</FreelancerTitle>
-                <FreelancerSubtitle>Plateforme de formation cybersécurité</FreelancerSubtitle>
+                <FreelancerSubtitle>Cybersecurity training platform</FreelancerSubtitle>
               </FreelancerInfo>
             </FreelancerHeader>
 
             <FreelancerStats>
               <FreelancerStat>
                 <FreelancerStatNumber>Top 1%</FreelancerStatNumber>
-                <FreelancerStatLabel>Mondial</FreelancerStatLabel>
+                <FreelancerStatLabel>Global</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
                 <FreelancerStatNumber>#195</FreelancerStatNumber>
-                <FreelancerStatLabel>Maroc</FreelancerStatLabel>
+                <FreelancerStatLabel>Morocco</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
                 <FreelancerStatNumber>150+</FreelancerStatNumber>
-                <FreelancerStatLabel>Rooms Complétées</FreelancerStatLabel>
+                <FreelancerStatLabel>Rooms Completed</FreelancerStatLabel>
               </FreelancerStat>
             </FreelancerStats>
 
@@ -663,7 +663,7 @@ const Achievements: React.FC = () => {
               rel="noopener noreferrer"
             >
               <FaExternalLinkAlt />
-              Voir mon profil TryHackMe
+              View my TryHackMe Profile
             </FreelancerProfileLink>
             </TryHackMeCard>
         </ContentGrid>
@@ -676,12 +676,12 @@ const Achievements: React.FC = () => {
           style={{ textAlign: 'center', marginTop: '4rem', marginBottom: '2rem' }}
         >
           <SectionTitle style={{ marginBottom: '1rem' }}>
-            Certifications Professionnelles
+            Professional Certifications
           </SectionTitle>
           <SectionSubtitle style={{ maxWidth: '100%', margin: '0 auto', width: '100%' }}>
-            Certifications reconnues dans le domaine de la cybersécurité, obtenues auprès d'organismes 
-            de référence comme Cisco, Google Cloud et LetsDefend, validant mes compétences techniques 
-            et mon expertise en sécurité informatique.
+            Recognized certifications in the cybersecurity field, obtained from reference 
+            organizations like Cisco, Google Cloud and LetsDefend, validating my technical skills 
+            and expertise in information security.
           </SectionSubtitle>
         </motion.div>
 

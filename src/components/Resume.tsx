@@ -294,7 +294,7 @@ const Resume: React.FC = () => {
   return (
     <ResumeContainer>
       <BackButton onClick={handleBack}>
-        ← Retour
+        ← Back
       </BackButton>
       
       <ResumeContent>

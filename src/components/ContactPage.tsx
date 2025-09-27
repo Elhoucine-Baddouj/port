@@ -433,7 +433,7 @@ const ContactPage: React.FC = () => {
     e.preventDefault();
     // Ici vous pouvez ajouter la logique d'envoi d'email
     console.log('Form submitted:', formData);
-    alert('Message envoyé avec succès !');
+    alert('Message sent successfully!');
     setFormData({ name: '', email: '', message: '' });
   };
 
@@ -454,10 +454,10 @@ const ContactPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <PageTitle>Contactez-moi</PageTitle>
+          <PageTitle>Contact Me</PageTitle>
           <PageSubtitle>
-            Prêt à collaborer sur votre prochain projet de cybersécurité ? 
-            N'hésitez pas à me contacter pour discuter de vos besoins.
+            Ready to collaborate on your next cybersecurity project? 
+            Feel free to contact me to discuss your needs.
           </PageSubtitle>
         </PageHeader>
 
@@ -546,7 +546,7 @@ const ContactPage: React.FC = () => {
             onSubmit={handleSubmit}
           >
             <FormGroup>
-              <FormLabel htmlFor="name">Nom complet</FormLabel>
+              <FormLabel htmlFor="name">Full Name</FormLabel>
               <FormInput
                 type="text"
                 id="name"
@@ -589,7 +589,7 @@ const ContactPage: React.FC = () => {
               whileTap={{ scale: 0.98 }}
             >
               <FaPaperPlane />
-              Envoyer le message
+              Send Message
             </SubmitButton>
           </ContactForm>
         </ContactSection>

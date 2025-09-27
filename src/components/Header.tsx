@@ -263,12 +263,12 @@ const Header: React.FC<HeaderProps> = ({ currentSection }) => {
   }, []);
 
   const navItems = [
-    { id: 'home', label: 'Accueil' },
-    { id: 'about', label: 'À propos' },
-    { id: 'skills', label: 'Compétences' },
-    { id: 'experience', label: 'Expérience' },
-    { id: 'projects', label: 'Projets' },
-    { id: 'achievements', label: 'Compétences en action' },
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'achievements', label: 'Achievements' },
     { id: 'contact', label: 'Contact', isPage: true },
     { id: 'resume', label: 'Resume', isSpecial: true }
   ];

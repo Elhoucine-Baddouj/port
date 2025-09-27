@@ -226,13 +226,13 @@ const Skills: React.FC = () => {
 
   const skillCategories = [
     {
-      title: "Détection&Monitoring",
+      title: "Detection & Monitoring",
       icon: <FaShieldAlt />,
       skills: [
         { name: "SIEM", level: 5, icon: <FaServer /> },
         { name: "Suricata & Snort", level: 4, icon: <FaExclamationTriangle /> },
         { name: "ELK Stack", level: 4, icon: <FaDatabase /> },
-        { name: "Analyse des Logs", level: 4, icon: <FaWindows /> },
+        { name: "Log Analysis", level: 4, icon: <FaWindows /> },
         { name: "Threat Hunting", level: 3, icon: <FaBinoculars /> }
       ]
     },
@@ -240,48 +240,48 @@ const Skills: React.FC = () => {
       title: "Pentesting & Audit",
       icon: <FaBug />,
       skills: [
-        { name: "Pentesting Web", level: 5, icon: <FaEye /> },
-        { name: "Pentesting Réseau", level: 5, icon: <FaNetworkWired /> },
-        { name: "Pentesting Mobile", level: 2, icon: <FaShieldAlt /> },
+        { name: "Web Pentesting", level: 5, icon: <FaEye /> },
+        { name: "Network Pentesting", level: 5, icon: <FaNetworkWired /> },
+        { name: "Mobile Pentesting", level: 2, icon: <FaShieldAlt /> },
         { name: "Social Engineering", level: 4, icon: <FaUserShield /> },
-        { name: "Audit de Code", level: 4, icon: <FaCode /> }
+        { name: "Code Audit", level: 4, icon: <FaCode /> }
       ]
     },
     {
-      title: "Analyse de Malware",
+      title: "Malware Analysis",
       icon: <FaEye />,
       skills: [
-        { name: "Analyse Statique", level: 5, icon: <FaCode /> },
-        { name: "Analyse Dynamique", level: 5, icon: <FaTerminal /> },
+        { name: "Static Analysis", level: 5, icon: <FaCode /> },
+        { name: "Dynamic Analysis", level: 5, icon: <FaTerminal /> },
         { name: "Reverse Engineering", level: 4, icon: <FaBug /> },
-        { name: "Analyse de Packets", level: 4, icon: <FaNetworkWired /> },
-        { name: "Forensics Numérique", level: 3, icon: <FaServer /> }
+        { name: "Packet Analysis", level: 4, icon: <FaNetworkWired /> },
+        { name: "Digital Forensics", level: 3, icon: <FaServer /> }
       ]
     },
     {
-      title: "Sécurité Applicative",
+      title: "Application Security",
       icon: <FaCode />,
       skills: [
         { name: "Secure Coding (OWASP)", level: 5, icon: <FaLock /> },
-        { name: "Validation d'Entrées", level: 5, icon: <FaCheck /> },
-        { name: "Chiffrement (AES, RSA, TLS)", level: 4, icon: <FaShieldAlt /> },
-        { name: "Authentification Sécurisée", level: 4, icon: <FaUserLock /> },
-        { name: "Sécurité API (JWT, OAuth2)", level: 4, icon: <FaKey /> }
+        { name: "Input Validation", level: 5, icon: <FaCheck /> },
+        { name: "Encryption (AES, RSA, TLS)", level: 4, icon: <FaShieldAlt /> },
+        { name: "Secure Authentication", level: 4, icon: <FaUserLock /> },
+        { name: "API Security (JWT, OAuth2)", level: 4, icon: <FaKey /> }
       ]
     },
     {
-      title: "Sécurité Réseaux",
+      title: "Network Security",
       icon: <FaNetworkWired />,
       skills: [
-        { name: "Sec_Architecture", level: 5, icon: <FaServer /> },
+        { name: "Security Architecture", level: 5, icon: <FaServer /> },
         { name: "Firewall & IDS/IPS", level: 5, icon: <FaLock /> },
-        { name: "VPN & Cryptographie", level: 4, icon: <FaShieldAlt /> },
-        { name: "Sécurité Cloud", level: 4, icon: <FaCloud /> },
-        { name: "Sécurité IoT", level: 3, icon: <FaNetworkWired /> }
+        { name: "VPN & Cryptography", level: 4, icon: <FaShieldAlt /> },
+        { name: "Cloud Security", level: 4, icon: <FaCloud /> },
+        { name: "IoT Security", level: 3, icon: <FaNetworkWired /> }
       ]
     },
     {
-      title: "Développement Sécurisé",
+      title: "Secure Development",
       icon: <FaCode />,
       skills: [
         { name: "Python", level: 5, icon: <FaPython /> },
@@ -313,22 +313,22 @@ const Skills: React.FC = () => {
   ];
 
   const toolDescriptions: Record<string, string> = {
-    'Kali Linux': "Distribution Linux orientée cybersécurité, utilisée pour le pentesting, l’audit et le forensic, avec de nombreux outils intégrés (Nmap, Metasploit, Wireshark, etc.).",
-    'Wireshark': "Analyseur de paquets réseau pour capturer et inspecter le trafic afin de détecter des anomalies, attaques ou fuites de données.",
-    'Metasploit': "Framework d’exploitation permettant de développer, tester et exécuter des exploits contre des systèmes vulnérables.",
-    'Nmap': "Scanner réseau pour découvrir hôtes, services et versions, et réaliser des audits de sécurité.",
-    'Burp Suite': "Outil d’interception/analyse HTTP(S) pour identifier et exploiter des vulnérabilités web.",
-    'Splunk': "Plateforme de collecte, indexation et visualisation de logs en temps réel pour le monitoring et la détection d’incidents.",
-    'Wazuh': "SIEM open-source offrant détection d’intrusions, gestion des logs, surveillance d’intégrité et réponse aux menaces.",
-    'OWASP ZAP': "Scanner open-source de sécurité web pour détecter automatiquement des failles (XSS, SQLi, etc.).",
-    'ELK Stack': "Elasticsearch, Logstash, Kibana : centraliser, traiter et visualiser de grands volumes de logs.",
-    'SQLMap': "Outil automatisé de test/exploitation d’injections SQL pour démontrer les risques d’accès non autorisé.",
-    'WhatWeb': "Scanner identifiant technologies et frameworks d'un site (CMS, serveurs, langages, plugins).",
-    'pfSense': "Firewall et routeur open-source basé sur FreeBSD, offrant des fonctionnalités avancées de sécurité réseau, VPN, et monitoring du trafic.",
-    'Docker': "Plateforme de conteneurs pour déployer des applications de façon portable et isolée.",
-    'Git': "Système de contrôle de version pour gérer et suivre les modifications du code en équipe.",
-    'Linux': "Système d’exploitation open-source, stable et flexible, largement utilisé en cybersécurité.",
-    'Windows': "Système d’exploitation Microsoft, très présent en entreprise et souvent ciblé par des attaques."
+    'Kali Linux': "Linux distribution focused on cybersecurity, used for penetration testing, auditing, and forensics, with many integrated tools (Nmap, Metasploit, Wireshark, etc.).",
+    'Wireshark': "Network packet analyzer for capturing and inspecting traffic to detect anomalies, attacks, or data leaks.",
+    'Metasploit': "Exploitation framework for developing, testing, and executing exploits against vulnerable systems.",
+    'Nmap': "Network scanner for discovering hosts, services, and versions, and conducting security audits.",
+    'Burp Suite': "HTTP(S) interception/analysis tool for identifying and exploiting web vulnerabilities.",
+    'Splunk': "Platform for collecting, indexing, and visualizing logs in real-time for monitoring and incident detection.",
+    'Wazuh': "Open-source SIEM offering intrusion detection, log management, integrity monitoring, and threat response.",
+    'OWASP ZAP': "Open-source web security scanner for automatically detecting vulnerabilities (XSS, SQLi, etc.).",
+    'ELK Stack': "Elasticsearch, Logstash, Kibana: centralize, process, and visualize large volumes of logs.",
+    'SQLMap': "Automated tool for testing/exploiting SQL injections to demonstrate unauthorized access risks.",
+    'WhatWeb': "Scanner identifying technologies and frameworks of a website (CMS, servers, languages, plugins).",
+    'pfSense': "Open-source firewall and router based on FreeBSD, offering advanced network security features, VPN, and traffic monitoring.",
+    'Docker': "Container platform for deploying applications in a portable and isolated way.",
+    'Git': "Version control system for managing and tracking code changes in teams.",
+    'Linux': "Open-source operating system, stable and flexible, widely used in cybersecurity.",
+    'Windows': "Microsoft operating system, very present in enterprises and often targeted by attacks."
   };
 
   const renderSkillLevel = (level: number) => {
@@ -345,9 +345,9 @@ const Skills: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
-          <SectionTitle>Compétences Techniques</SectionTitle>
+          <SectionTitle>Technical Skills</SectionTitle>
           <SectionSubtitle>
-            Expertise approfondie dans les domaines de la cybersécurité
+            Deep expertise in cybersecurity domains
           </SectionSubtitle>
         </SectionHeader>
 
@@ -387,7 +387,7 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <SectionTitle style={{ textAlign: 'center', marginBottom: 'var(--spacing-xl)' }}>
-            Outils & Technologies
+            Tools & Technologies
           </SectionTitle>
           
           <ToolsGrid>
