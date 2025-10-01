@@ -284,7 +284,15 @@ const BackButton = styled.button`
 
 const Resume: React.FC = () => {
   const handlePrint = () => {
-    window.print();
+    const url = process.env.PUBLIC_URL + '/CV-BADDOUJ.pdf';
+    // Try downloading/opening the hosted PDF in /public
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'CV-BADDOUJ.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleBack = () => {

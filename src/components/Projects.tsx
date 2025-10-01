@@ -27,10 +27,10 @@ const SectionHeader = styled(motion.div)`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   background: linear-gradient(135deg, var(--primary-color) 0%, #00cc33 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,7 +38,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionSubtitle = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
@@ -75,8 +75,8 @@ const FilterButton = styled.button<{ active: boolean }>`
 
 const ProjectsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-lg);
 `;
 
 const ProjectCard = styled(motion.div)`
@@ -121,13 +121,13 @@ const ProjectImage = styled.div<{ bgColor: string }>`
 `;
 
 const ProjectIcon = styled.div`
-  font-size: 4rem;
+  font-size: 3.2rem;
   color: var(--text-primary);
   z-index: 2;
 `;
 
 const ProjectContent = styled.div`
-  padding: var(--spacing-xl);
+  padding: var(--spacing-lg);
 `;
 
 const ProjectTitle = styled.h3`

@@ -437,6 +437,7 @@ const Achievements: React.FC = () => {
       rating: 5,
       review: "He was just amazing. He managed the project with professionalism and he delivered the project even faster than the deadline. Great communication in English and he helped me each step of the process and answered me questions.",
       project: "GUI HTTP SNIFFER",
+      link: "https://www.fr.freelancer.com/u/houssinb9?review_context_id=38972646&review_type=project&frm=houssinb9&sb=t",
       profileInitial: "A"
     },
     {
@@ -447,6 +448,7 @@ const Achievements: React.FC = () => {
       rating: 5,
       review: "He worked hard to fix the simulation issue, he is a hard working person and I would be happy to work with him in the future.",
       project: "NS3 NETWORK SIMULATION",
+      link: "https://www.fr.freelancer.com/u/houssinb9?review_context_id=38915001&review_type=project&frm=houssinb9&sb=t",
       profileInitial: "M"
     },
     {
@@ -457,6 +459,7 @@ const Achievements: React.FC = () => {
       rating: 5,
       review: "Elhoucine B is of outstanding character and goes above and beyond what is necessary to complete a project. I will definitely use him again.",
       project: "KEYHELP CONTROL PANEL",
+      link: "https://www.fr.freelancer.com/u/houssinb9?review_context_id=38906883&review_type=project&frm=houssinb9&sb=t",
       profileInitial: "B"
     }
   ];
@@ -509,7 +512,7 @@ const Achievements: React.FC = () => {
                 <FreelancerStatLabel>On-Time Delivery</FreelancerStatLabel>
               </FreelancerStat>
               <FreelancerStat>
-                <FreelancerStatNumber>86%</FreelancerStatNumber>
+                <FreelancerStatNumber>96%</FreelancerStatNumber>
                 <FreelancerStatLabel>Acceptance Rate</FreelancerStatLabel>
               </FreelancerStat>
             </FreelancerStats>
@@ -584,7 +587,20 @@ const Achievements: React.FC = () => {
 
                 <ReviewText>{review.review}</ReviewText>
 
-                <ProjectTag>{review.project}</ProjectTag>
+                <ProjectTag>
+                  {review.link ? (
+                    <a
+                      href={review.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: 'inherit', textDecoration: 'underline' }}
+                    >
+                      {review.project}
+                    </a>
+                  ) : (
+                    review.project
+                  )}
+                </ProjectTag>
               </ReviewCard>
             ))}
           </ReviewsGrid>

@@ -162,6 +162,12 @@ const App: React.FC = () => {
     };
   }, []);
 
+  // Always scroll to top when switching pages (resume, contact, home)
+  useEffect(() => {
+    // Use instant jump to avoid intermediate animation focusing lower content
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [currentPage]);
+
   if (isLoading) {
     return <LoadingScreen />;
   }

@@ -70,14 +70,14 @@ const HighlightText = styled.span`
 const StatsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
 `;
 
 const StatCard = styled.div`
   background: var(--background-dark);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   text-align: center;
   transition: all 0.3s ease;
@@ -90,17 +90,17 @@ const StatCard = styled.div`
 `;
 
 const StatNumber = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-2xs);
 `;
 
 const StatLabel = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 `;
 
 const AboutImage = styled(motion.div)`
@@ -120,6 +120,7 @@ const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-glow);
+  overflow: hidden;
 
   &::before {
     content: '';
@@ -131,6 +132,15 @@ const ImageContainer = styled.div`
     background: var(--background-dark);
     border-radius: 50%;
   }
+`;
+
+const ProfileImage = styled.img`
+  position: relative;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 2;
 `;
 
 const ProfileIcon = styled(FaUserShield)`
@@ -231,7 +241,12 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <ImageContainer>
-              <ProfileIcon />
+              <ProfileImage
+                src={process.env.PUBLIC_URL + '/badoujZamlInterface.png'}
+                alt="Elhoucine Baddouj profile"
+                loading="eager"
+                decoding="async"
+              />
             </ImageContainer>
             
             <FloatingElements>

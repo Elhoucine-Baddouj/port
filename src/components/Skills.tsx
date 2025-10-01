@@ -10,7 +10,7 @@ import {
   FaDatabase as FaDatabaseIcon, FaSpider, FaExclamationTriangle,
   FaBinoculars, FaCheck, FaUserLock, FaKey
 } from 'react-icons/fa';
-import { SiCplusplus, SiGo, SiKalilinux, SiWireshark, SiSplunk, SiElastic } from 'react-icons/si';
+import { SiCplusplus, SiGo, SiKalilinux, SiWireshark, SiSplunk, SiElastic, SiVirustotal } from 'react-icons/si';
 
 const SkillsSection = styled.section`
   padding: var(--spacing-2xl) 0;
@@ -50,16 +50,16 @@ const SectionSubtitle = styled.p`
 
 const SkillsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-2xl);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
 `;
 
 const SkillCategory = styled(motion.div)`
   background: var(--background-light);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
   transition: all 0.3s ease;
 
   &:hover {
@@ -78,11 +78,11 @@ const CategoryHeader = styled.div`
 
 const CategoryIcon = styled.div`
   color: var(--primary-color);
-  font-size: 2rem;
+  font-size: 1.6rem;
 `;
 
 const CategoryTitle = styled.h3`
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0;
@@ -90,16 +90,16 @@ const CategoryTitle = styled.h3`
 
 const SkillsList = styled.div`
   display: grid;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
 `;
 
 const SkillItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
   background: var(--background-dark);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
 
@@ -117,12 +117,13 @@ const SkillInfo = styled.div`
 
 const SkillIcon = styled.div`
   color: var(--primary-color);
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const SkillName = styled.span`
   color: var(--text-primary);
   font-weight: 500;
+  font-size: 0.95rem;
 `;
 
 const SkillLevel = styled.div`
@@ -132,17 +133,17 @@ const SkillLevel = styled.div`
 `;
 
 const SkillDot = styled.div<{ filled: boolean }>`
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: ${props => props.filled ? 'var(--primary-color)' : 'var(--border-color)'};
 `;
 
 const ToolsGrid = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: var(--spacing-lg);
-  margin-top: var(--spacing-xl);
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
 `;
 
 const ToolCard = styled(motion.div)`
@@ -154,11 +155,17 @@ const ToolCard = styled(motion.div)`
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  z-index: 1;
 
   &:hover {
     border-color: var(--primary-color);
     transform: translateY(-3px);
     box-shadow: var(--shadow-glow);
+    z-index: 50;
+  }
+
+  &:focus-within {
+    z-index: 50;
   }
 `;
 
@@ -189,8 +196,9 @@ const Tooltip = styled(motion.div)`
   color: var(--text-secondary);
   font-size: 0.85rem;
   line-height: 1.4;
-  z-index: 10;
+  z-index: 999;
   box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  pointer-events: none;
 
   &::before {
     content: '';
@@ -309,7 +317,9 @@ const Skills: React.FC = () => {
     { name: "Docker", icon: <FaDocker /> },
     { name: "Git", icon: <FaGithub /> },
     { name: "Linux", icon: <FaLinux /> },
-    { name: "Windows", icon: <FaWindows /> }
+    { name: "Windows", icon: <FaWindows /> },
+    { name: "VirusTotal", icon: <SiVirustotal /> },
+    { name: "ANY.RUN", icon: <FaSearch /> }
   ];
 
   const toolDescriptions: Record<string, string> = {
@@ -329,6 +339,9 @@ const Skills: React.FC = () => {
     'Git': "Version control system for managing and tracking code changes in teams.",
     'Linux': "Open-source operating system, stable and flexible, widely used in cybersecurity.",
     'Windows': "Microsoft operating system, very present in enterprises and often targeted by attacks."
+    ,
+    'VirusTotal': "Online malware scanner that aggregates multiple antivirus engines and threat intelligence to analyze files, URLs, and domains.",
+    'ANY.RUN': "Interactive malware sandbox for dynamic analysis of suspicious files and URLs in an isolated environment."
   };
 
   const renderSkillLevel = (level: number) => {
