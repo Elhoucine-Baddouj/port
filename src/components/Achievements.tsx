@@ -8,11 +8,11 @@ import {
 import { SiTryhackme } from 'react-icons/si';
 
 const AchievementsSection = styled.section`
-  padding: 3rem 0;
+  padding: 2rem 0;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  min-height: auto;
 `;
 
 const Container = styled.div`
@@ -47,7 +47,7 @@ const SectionSubtitle = styled.p`
 const ContentGrid = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 `;
 
 // Freelancer Section - Full Width
@@ -55,7 +55,7 @@ const FreelancerSection = styled(motion.div)`
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   width: 100vw;
   margin-left: calc(-50vw + 50%);
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 1.5rem 2rem;
   position: relative;
   overflow: hidden;
   border-top: 1px solid rgba(0, 255, 65, 0.1);
@@ -255,7 +255,7 @@ const ReviewsSection = styled.div`
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   margin-top: 0;
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem 1rem 1.5rem 1rem;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(0, 255, 65, 0.1);
@@ -307,8 +307,8 @@ const ReviewsSubtitle = styled.p`
 
 const ReviewsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
   max-width: 1000px;
   margin: 0 auto;
 `;
@@ -317,7 +317,7 @@ const ReviewCard = styled(motion.div)`
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   border: 1px solid rgba(0, 255, 65, 0.2);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -612,7 +612,7 @@ const Achievements: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ textAlign: 'center', marginTop: '4rem', marginBottom: '2rem' }}
+          style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '1.5rem' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem', marginBottom: '1rem' }}>
             <div style={{ 
@@ -689,7 +689,7 @@ const Achievements: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          style={{ textAlign: 'center', marginTop: '4rem', marginBottom: '2rem' }}
+          style={{ textAlign: 'center', marginTop: '2rem', marginBottom: '1.5rem' }}
         >
           <SectionTitle style={{ marginBottom: '1rem' }}>
             Professional Certifications
@@ -708,11 +708,11 @@ const Achievements: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '2rem', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '1.5rem', 
             maxWidth: '1200px', 
             margin: '0 auto',
-            padding: '0 2rem'
+            padding: '0 1rem'
           }}
         >
           {/* Cisco Certification */}
@@ -720,7 +720,7 @@ const Achievements: React.FC = () => {
             background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
             border: '2px solid #00ff41',
             borderRadius: '12px',
-            padding: '2rem',
+            padding: '1.5rem',
             textAlign: 'center',
             transition: 'all 0.3s ease',
             cursor: 'pointer'
@@ -738,10 +738,10 @@ const Achievements: React.FC = () => {
               src="https://images.credly.com/images/af8c6b4e-fc31-47c4-8dcb-eb7a2065dc5b/I2CS__1_.png" 
               alt="Cisco Introduction to Cybersecurity"
               style={{ 
-                width: '120px', 
-                height: '120px', 
+                width: '100px', 
+                height: '100px', 
                 objectFit: 'contain',
-                marginBottom: '1rem',
+                marginBottom: '0.8rem',
                 borderRadius: '8px'
               }}
             />
@@ -775,7 +775,7 @@ const Achievements: React.FC = () => {
             background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
             border: '2px solid #00ff41',
             borderRadius: '12px',
-            padding: '2rem',
+            padding: '1.5rem',
             textAlign: 'center',
             transition: 'all 0.3s ease',
             cursor: 'pointer'
@@ -793,10 +793,10 @@ const Achievements: React.FC = () => {
               src="https://media.licdn.com/dms/image/sync/v2/D5627AQEAZ2JVvA-aEA/articleshare-shrink_800/articleshare-shrink_800/0/1734346434823?e=2147483647&v=beta&t=sSNhYmNbsC2yrZ8hvxtXX5STQt6QLUd12Xdk9dnoizY" 
               alt="SOC Analyst LetsDefend"
               style={{ 
-                width: '120px', 
-                height: '120px', 
+                width: '100px', 
+                height: '100px', 
                 objectFit: 'contain',
-                marginBottom: '1rem',
+                marginBottom: '0.8rem',
                 borderRadius: '8px'
               }}
             />
@@ -830,7 +830,7 @@ const Achievements: React.FC = () => {
             background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
             border: '2px solid #00ff41',
             borderRadius: '12px',
-            padding: '2rem',
+            padding: '1.5rem',
             textAlign: 'center',
             transition: 'all 0.3s ease',
             cursor: 'pointer'
@@ -848,10 +848,10 @@ const Achievements: React.FC = () => {
               src="https://media.licdn.com/dms/image/v2/D5622AQFcumpx8gsfLA/feedshare-shrink_800/feedshare-shrink_800/0/1720736907960?e=2147483647&v=beta&t=VSv7JXFfE3hyDtynCLQfczTVex4gtzpVPWUcoTzI1eM" 
               alt="Google Cloud Cybersecurity Certificate"
               style={{ 
-                width: '120px', 
-                height: '120px', 
+                width: '100px', 
+                height: '100px', 
                 objectFit: 'contain',
-                marginBottom: '1rem',
+                marginBottom: '0.8rem',
                 borderRadius: '8px'
               }}
             />
